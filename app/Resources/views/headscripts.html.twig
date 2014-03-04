@@ -1,0 +1,19 @@
+{% stylesheets filter='sass'
+'@KTUAssetsBundle/Resources/assets/scss/main.scss' %}
+<link rel="stylesheet" href="{{ asset_url }}"/>
+{% endstylesheets %}
+
+{% stylesheets filter='cssrewrite'
+'bundles/ktuassets/css/bootstrap.min.css' %}
+<link rel="stylesheet" href="{{ asset_url }}"/>
+{% endstylesheets %}
+
+{% block stylesheets %}{% endblock %}
+
+{% javascripts
+'@KTUAssetsBundle/Resources/public/js/jquery-1.10.2.js'
+'@KTUAssetsBundle/Resources/public/js/*' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% block javascripts %}{% endblock %}

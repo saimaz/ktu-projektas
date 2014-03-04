@@ -1,0 +1,8 @@
+#ktu_assets:
+#    resource: "@KTUAssetsBundle/Resources/config/routing.yml"
+#    prefix:   /
+
+ktu_test:
+    resource: "@KTUTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
