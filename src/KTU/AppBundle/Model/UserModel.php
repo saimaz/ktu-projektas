@@ -9,8 +9,8 @@ class UserModel extends AbstractModel
     {
         $user     = new User();
         $salt     = md5(uniqid());
-        $password = password_hash(
-            $password,
+        $password = \password_hash(
+        $password,
             PASSWORD_BCRYPT,
             [
                 'cost' => 12,
