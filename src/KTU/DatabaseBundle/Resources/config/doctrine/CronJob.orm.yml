@@ -13,5 +13,7 @@ KTU\DatabaseBundle\Entity\CronJob:
       type: string
     registered:
       type: datetime
+      nullable: true
     executed:
       type: datetime
+      nullable: true
