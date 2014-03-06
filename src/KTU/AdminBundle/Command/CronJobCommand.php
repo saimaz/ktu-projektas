@@ -30,20 +30,19 @@ class CronJobCommand extends AbstractCommand
         $this->addStyle();
 
         chdir(realpath(__DIR__ . '/../../../..'));
-        $this->updateProject();
 
-//        try {
-//            $job = $this->getCronJobModel()->getWaitingJob();
-//        } catch (\Exception $e) {
-//            $this->updateProject();
-//            $job = null;
-//        }
-//
-//        if ($job) {
-//            $this->getCronJobModel()->run($job);
-//            $this->switchAction($job);
-//            $this->getCronJobModel()->end($job);
-//        }
+        try {
+            $job = $this->getCronJobModel()->getWaitingJob();
+        } catch (\Exception $e) {
+            $this->updateProject();
+            $job = null;
+        }
+
+        if ($job) {
+            $this->getCronJobModel()->run($job);
+            $this->switchAction($job);
+            $this->getCronJobModel()->end($job);
+        }
     }
 
     protected function setInputOutput(InputInterface $input, OutputInterface $output)
