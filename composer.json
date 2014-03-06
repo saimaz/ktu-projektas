@@ -50,5 +50,8 @@
         "branch-alias": {
             "dev-master": "2.4-dev"
         }
+    },
+    "require-dev": {
+        "raveren/kint": "dev-master"
     }
 }

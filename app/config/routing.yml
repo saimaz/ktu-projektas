@@ -1,8 +1,12 @@
+ktu_app:
+    resource: "@KTUAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ktu_admin:
+    resource: "@KTUAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 #ktu_assets:
 #    resource: "@KTUAssetsBundle/Resources/config/routing.yml"
 #    prefix:   /
-
-ktu_test:
-    resource: "@KTUTestBundle/Resources/config/routing.yml"
-    prefix:   /
 

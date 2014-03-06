@@ -1,0 +1,7 @@
+parameters:
+#    ktu_database.example.class: KTU\DatabaseBundle\Example
+
+services:
+#    ktu_database.example:
+#        class: %ktu_database.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

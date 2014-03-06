@@ -1,0 +1,15 @@
+parameters:
+#    ktu_app.example.class: KTU\AppBundle\Example
+
+services:
+  model.user:
+    class: KTU\AppBundle\Model\UserModel
+    calls:
+      - [setDoctrine, [@doctrine]]
+  model.cronjob:
+    class: KTU\AppBundle\Model\CronJobModel
+    calls:
+      - [setDoctrine, [@doctrine]]
+#    ktu_app.example:
+#        class: %ktu_app.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

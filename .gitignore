@@ -13,3 +13,5 @@
 /composer.phar
 /composer.lock
 .idea
+/src/KTU/DatabaseBundle/Entity
+!/src/KTU/DatabaseBundle/Entity/User.php

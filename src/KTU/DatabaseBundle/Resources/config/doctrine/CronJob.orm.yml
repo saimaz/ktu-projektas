@@ -1,0 +1,13 @@
+KTU\DatabaseBundle\Entity\CronJob:
+  type: entity
+  table: cron_job
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    action:
+      type: string
+    status:
+      type: string

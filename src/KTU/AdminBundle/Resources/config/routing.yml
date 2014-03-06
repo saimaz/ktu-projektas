@@ -1,0 +1,3 @@
+ktu_admin_homepage:
+    pattern:  /
+    defaults: { _controller: KTUAdminBundle:Default:index }
