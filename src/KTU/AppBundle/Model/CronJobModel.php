@@ -16,6 +16,7 @@ class CronJobModel extends AbstractModel
         $job = new CronJob();
         $job->setAction($action);
         $job->setStatus(self::STATUS_WAITING);
+        $job->setRegistered(new \DateTime());
 
         $this->getDoctrine()->getManager()->persist($job);
         $this->getDoctrine()->getManager()->flush();
@@ -30,9 +31,22 @@ class CronJobModel extends AbstractModel
             ]);
     }
 
-    public function updateStatus(CronJob $job, $status)
+    public function setStatus(CronJob $job, $status)
     {
         $job->setStatus($status);
+        $this->getDoctrine()->getManager()->flush();
+    }
+
+    public function run(CronJob $job)
+    {
+        $job->setStatus(self::STATUS_RUNNING);
+        $this->getDoctrine()->getManager()->flush();
+    }
+
+    public function end(CronJob $job)
+    {
+        $job->setStatus(self::STATUS_DONE);
+        $job->setExecuted(new \DateTime());
         $this->getDoctrine()->getManager()->flush();
     }
 } 

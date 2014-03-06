@@ -11,3 +11,7 @@ KTU\DatabaseBundle\Entity\CronJob:
       type: string
     status:
       type: string
+    registered:
+      type: datetime
+    executed:
+      type: datetime
