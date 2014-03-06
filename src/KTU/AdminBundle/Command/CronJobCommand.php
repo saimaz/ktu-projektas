@@ -30,19 +30,20 @@ class CronJobCommand extends AbstractCommand
         $this->addStyle();
 
         chdir(realpath(__DIR__ . '/../../../..'));
+        $this->updateProject();
 
-        try {
-            $job = $this->getCronJobModel()->getWaitingJob();
-        } catch (\Exception $e) {
-            $this->updateProject();
-            $job = null;
-        }
-
-        if ($job) {
-            $this->getCronJobModel()->run($job);
-            $this->switchAction($job);
-            $this->getCronJobModel()->end($job);
-        }
+//        try {
+//            $job = $this->getCronJobModel()->getWaitingJob();
+//        } catch (\Exception $e) {
+//            $this->updateProject();
+//            $job = null;
+//        }
+//
+//        if ($job) {
+//            $this->getCronJobModel()->run($job);
+//            $this->switchAction($job);
+//            $this->getCronJobModel()->end($job);
+//        }
     }
 
     protected function setInputOutput(InputInterface $input, OutputInterface $output)
@@ -88,9 +89,7 @@ class CronJobCommand extends AbstractCommand
         $this->output->writeln('<msg>Clearing cache ...</msg>');
         $this->runCommand(
             'cache:clear',
-            [
-                '--env' => 'prod'
-            ],
+            [],
             $this->output
         );
         $this->output->writeln('<msg>Generating entities ...</msg>');
@@ -99,7 +98,6 @@ class CronJobCommand extends AbstractCommand
             [
                 'name'        => 'KTUDatabaseBundle',
                 '--no-backup' => true,
-                '--env'       => 'prod',
             ],
             $this->output
         );
@@ -108,7 +106,6 @@ class CronJobCommand extends AbstractCommand
             'doctrine:schema:update',
             [
                 '--force' => true,
-                '--env'   => 'prod',
             ],
             $this->output
         );
