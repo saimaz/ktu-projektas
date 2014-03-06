@@ -83,7 +83,9 @@ class CronJobCommand extends AbstractCommand
         $this->output->writeln('<msg>Dumping assetic ...</msg>');
         $this->runCommand(
             'assetic:dump',
-            [],
+            [
+                '--env' => 'prod',
+            ],
             $this->output
         );
         $this->output->writeln('<msg>Clearing cache ...</msg>');
