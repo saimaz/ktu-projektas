@@ -33,7 +33,7 @@ class CronJobCommand extends AbstractCommand
 
         try {
             $job = $this->getCronJobModel()->getWaitingJob();
-        } catch (\Doctrine\DBAL\DBALException $e) {
+        } catch (\Exception $e) {
             $this->updateProject();
             $job = null;
         }
