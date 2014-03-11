@@ -6,7 +6,10 @@
     "autoload": {
         "psr-0": {
             "": "src/"
-        }
+        },
+        "files": [
+            "app/path_function.php"
+        ]
     },
     "require": {
         "php": ">=5.3.3",

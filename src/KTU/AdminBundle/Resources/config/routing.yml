@@ -1,3 +1,11 @@
-ktu_admin_homepage:
+admin:
     pattern:  /
     defaults: { _controller: KTUAdminBundle:Default:index }
+
+admin_cron:
+    pattern: /cron
+    defaults: { _controller: KTUAdminBundle:Cron:list }
+
+admin_update_project:
+    pattern: /update-project
+    defaults: { _controller: KTUAdminBundle:Cron:update }

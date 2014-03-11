@@ -49,4 +49,9 @@ class CronJobModel extends AbstractModel
         $job->setExecuted(new \DateTime());
         $this->getDoctrine()->getManager()->flush();
     }
+
+    public function getAll()
+    {
+        return $this->getDoctrine()->getRepository('KTUDatabaseBundle:CronJob')->findAll();
+    }
 } 
