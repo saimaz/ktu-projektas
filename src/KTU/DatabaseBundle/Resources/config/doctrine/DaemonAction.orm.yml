@@ -1,0 +1,22 @@
+KTU\DatabaseBundle\Entity\DaemonAction:
+  type: entity
+  table: daemon_action
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    action:
+      type: string
+    status:
+      type: string
+    registered:
+      type: datetime
+      nullable: true
+    executed:
+      type: datetime
+      nullable: true
+    log:
+      type: text
+      nullable: true

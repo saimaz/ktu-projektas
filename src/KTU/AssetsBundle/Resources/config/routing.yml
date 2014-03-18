@@ -1,3 +1,0 @@
-ktu_assets_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: KTUAssetsBundle:Default:index }

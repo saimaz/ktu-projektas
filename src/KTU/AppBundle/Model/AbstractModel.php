@@ -1,19 +1,25 @@
 <?php
 namespace KTU\AppBundle\Model;
 
-use Doctrine\Bundle\DoctrineBundle\Registry;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 abstract class AbstractModel {
-    protected $doctrine;
+    protected $container;
 
-    public function setDoctrine(Registry $doctrine)
+    public function __construct(ContainerInterface $container)
     {
-        $this->doctrine = $doctrine;
+        $this->container = $container;
+    }
+
+    /* @return \Symfony\Component\DependencyInjection\ContainerInterface */
+    protected function getContainer()
+    {
+        return $this->container;
     }
 
     /* @return \Doctrine\Bundle\DoctrineBundle\Registry */
     protected function getDoctrine()
     {
-        return $this->doctrine;
+        return $this->getContainer()->get('doctrine');
     }
 } 

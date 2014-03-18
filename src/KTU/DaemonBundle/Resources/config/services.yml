@@ -1,0 +1,10 @@
+parameters:
+#    ktu_daemon.example.class: KTU\DaemonBundle\Example
+
+services:
+#    ktu_daemon.example:
+#        class: %ktu_daemon.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+  daemon.model:
+    class: KTU\DaemonBundle\Model\DaemonModel
+    arguments: [@service_container]

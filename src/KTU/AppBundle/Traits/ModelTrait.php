@@ -2,16 +2,18 @@
 namespace KTU\AppBundle\Traits;
 
 /* @method \Symfony\Component\DependencyInjection\ContainerInterface getContainer() */
-trait ModelTrait {
+trait ModelTrait
+{
     /* @return \KTU\AppBundle\Model\UserModel */
     protected function getUserModel()
     {
-        return $this->getContainer()->get('model.user');
+        return $this->getContainer()->get('app_bundle.user.model');
     }
 
-    /* @return \KTU\AppBundle\Model\CronJobModel */
-    protected function getCronJobModel()
+    /* @return \KTU\DaemonBundle\Model\DaemonModel */
+    protected function getDaemonModel()
     {
-        return $this->getContainer()->get('model.cronjob');
+        return $this->getContainer()->get('daemon.model');
     }
-} 
+
+}

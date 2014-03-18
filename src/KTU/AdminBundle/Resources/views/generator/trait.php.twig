@@ -1,0 +1,15 @@
+<?php
+namespace {{ namespace }};
+
+/* @method \Symfony\Component\DependencyInjection\ContainerInterface getContainer() */
+trait {{ trait }}
+{
+{% for method in methods %}
+    /* @return {{ method.class }} */
+    protected function {{ method.method }}()
+    {
+        return $this->getContainer()->get('{{ method.service }}');
+    }
+
+{% endfor %}
+}

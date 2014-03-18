@@ -10,21 +10,6 @@ class DefaultController extends AbstractController
 {
     public function indexAction(Request $request)
     {
-        $form = $this->createFormBuilder()
-            ->add('update', 'submit')
-            ->getForm();
-
-        $form->handleRequest($request);
-
-        if($form->isValid()) {
-            $this->getCronJobModel()->addJob(CronJobModel::ACTION_UPDATE);
-        }
-
-        return $this->render(
-            'KTUAdminBundle:Default:index.html.twig',
-            [
-                'update' => $form->createView(),
-            ]
-        );
+        return $this->render('KTUAdminBundle:Default:index.html.twig');
     }
 }

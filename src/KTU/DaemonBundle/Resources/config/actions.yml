@@ -1,0 +1,5 @@
+parameters:
+  daemon_actions:
+    update:
+      name: 'Update project'
+      class: KTU\DaemonBundle\Action\UpdateAction

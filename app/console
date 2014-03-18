@@ -15,6 +15,19 @@ use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Debug\Debug;
 
 $input = new ArgvInput();
+
+$noDaemon = $input->getParameterOption('--no-daemon', false) === null ? true : false;
+
+if($input->getFirstArgument() == 'daemon:run' && !$noDaemon) {
+    $pid = pcntl_fork();
+
+    if($pid == -1) {
+        die('Could not fork');
+    } elseif ($pid) {
+        die('PID: ' . $pid . PHP_EOL);
+    }
+}
+
 $env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ? : 'dev');
 $debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
 

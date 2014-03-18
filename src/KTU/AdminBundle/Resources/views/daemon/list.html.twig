@@ -1,0 +1,55 @@
+{% extends 'KTUAdminBundle::layout.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>Daemon actions</h1>
+    </div>
+    {% if success %}
+        <div class="alert alert-success text-center">Action registered successfully</div>
+    {% endif %}
+
+    {{ form(register) }}
+
+    {% if not list %}
+        <div class="alert alert-warning text-center">There are no actions registered</div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Action</th>
+                <th>Register date</th>
+                <th>Execution date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for action in list %}
+                {% include 'KTUAdminBundle:daemon:list-item.html.twig' with { 'action': action } %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            Labels:
+            <span class="label label-warning">Waiting</span>
+            <span class="label label-primary">Running</span>
+            <span class="label label-success">Done</span>
+        </div>
+    {% endif %}
+
+    <script type="text/javascript">
+        $(function () {
+            $('[name="form[action]"]').change(function (e) {
+                $(this).parents('form').submit();
+            });
+
+            setInterval(function () {
+                $('.list-item').each(function (i, el) {
+                    if ($(this).data('update')) {
+                        $.get('/admin/daemon/list/item/' + $(this).data('id'), function (data) {
+                            el.outerHTML = data;
+                        }, 'html');
+                    }
+                });
+            }, 1000);
+        });
+    </script>
+{% endblock %}

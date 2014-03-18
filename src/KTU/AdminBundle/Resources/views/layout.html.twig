@@ -4,10 +4,37 @@
     <meta charset="UTF-8"/>
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    {% include '::headscripts.html.twig' %}
+
+    {% stylesheets filter='cssrewrite'
+    'bundles/ktuapp/css/bootstrap.min.css'
+    'bundles/ktuapp/css/admin-style.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    {% block headstyle %}{% endblock %}
+
+    {% javascripts
+    'bundles/ktuapp/js/jquery.min.js'
+    'bundles/ktuapp/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% block javascripts %}{% endblock %}
+
 </head>
 <body>
-{% include 'navbar.html.twig' %}
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">Brand</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li><a href="{{ path('admin') }}"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="{{ path('admin.daemon.list') }}"><span class="glyphicon glyphicon-tasks"></span></a></li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
     {% block body %}{% endblock %}
 </div>

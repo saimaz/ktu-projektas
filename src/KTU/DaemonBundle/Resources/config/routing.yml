@@ -1,0 +1,3 @@
+ktu_daemon_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: KTUDaemonBundle:Default:index }

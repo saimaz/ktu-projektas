@@ -2,10 +2,12 @@ admin:
     pattern:  /
     defaults: { _controller: KTUAdminBundle:Default:index }
 
-admin_cron:
-    pattern: /cron
-    defaults: { _controller: KTUAdminBundle:Cron:list }
+admin.daemon.list:
+  pattern: /daemon/list
+  defaults: { _controller: KTUAdminBundle:Daemon:list }
 
-admin_update_project:
-    pattern: /update-project
-    defaults: { _controller: KTUAdminBundle:Cron:update }
+admin.daemon.list-item:
+  pattern: /daemon/list/item/{id}
+  defaults: { _controller: KTUAdminBundle:Daemon:getListItem }
+  requirements:
+    id: \d+

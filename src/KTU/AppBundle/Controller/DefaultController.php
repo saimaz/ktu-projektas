@@ -8,6 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('KTUAppBundle:Default:index.html.twig');
+        $data = 'Hello';
+        return $this->render('KTUAppBundle:Default:index.html.twig', [ 'data' => $data ]);
     }
 }

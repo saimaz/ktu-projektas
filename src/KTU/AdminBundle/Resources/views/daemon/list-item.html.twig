@@ -1,0 +1,21 @@
+{% set action_class = 'label label-default' %}
+
+{% if action.status == 'waiting' %}
+    {% set action_class = 'label label-warning' %}
+{% elseif action.status == 'running' %}
+    {% set action_class = 'label label-primary' %}
+{% elseif action.status == 'done' %}
+    {% set action_class = 'label label-success' %}
+{% endif %}
+
+<tr class="list-item" data-update="{{ action.status == 'done' ? 'false' : 'true' }}" data-id="{{ action.id }}">
+    <td>
+        <span class="{{ action_class }}">{{ names[action.action] }}</span>
+    </td>
+    <td>
+        {{ action.registered is not null ? action.registered|date('Y-m-d H:i:s') : 'null' }}
+    </td>
+    <td>
+        {{ action.executed is not null ? action.executed|date('Y-m-d H:i:s') : 'null' }}
+    </td>
+</tr>

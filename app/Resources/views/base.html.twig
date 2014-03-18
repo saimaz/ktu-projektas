@@ -4,7 +4,21 @@
     <meta charset="UTF-8"/>
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    {% include '::headscripts.html.twig' %}
+    {# --- --- Stylesheets --- --- #}
+
+    {% stylesheets filter='cssrewrite'
+    'bundles/ktuapp/css/bootstrap.min.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    {% block stylesheet %}{% endblock %}
+    {# --- --- Javascripts --- --- #}
+
+    {% javascripts
+    'bundles/ktuapp/js/jquery.min.js'
+    'bundles/ktuapp/js/bootstrap.min.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% block javascript %}{% endblock %}
 </head>
 <body>
 {% include 'navbar.html.twig' %}
